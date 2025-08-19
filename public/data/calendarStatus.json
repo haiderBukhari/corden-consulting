@@ -1,0 +1,72 @@
+[
+    {
+       "fname":"Ronald",
+       "lname":"Richard",
+       "avatar":"https:\/\/rb.gy\/0dk4b2",
+       "title": "Accountant",
+       "leave_type":{
+          "id":"103",
+          "name":"casual_leave",
+          "description":"Casual"
+       },
+       "from":"2024-04-03",
+       "to":"2024-04-05",
+       "status":"pending"
+    },
+    {
+       "fname":"Karim",
+       "lname":"Benzima",
+       "avatar":"https:\/\/t.ly\/Ejh1k",
+       "title": "Accountant",
+       "leave_type":{
+          "id":"102",
+          "name":"emergency_leave",
+          "description":"Emergency"
+       },
+       "from":"2024-04-02",
+       "to":"2024-04-03",
+       "status":"pending"
+    },
+    {
+       "fname":"Karin",
+       "lname":"James",
+       "avatar":"https:\/\/rb.gy\/0d4woy",
+       "title": "Accountant",
+       "leave_type":{
+          "id":"103",
+          "name":"casual_leave",
+          "description":"Casual"
+       },
+       "from":"2024-04-04",
+       "to":"2024-04-03",
+       "status":"pending"
+    },
+    {
+       "fname":"Ali",
+       "lname":"Hamza",
+       "avatar":"https:\/\/shorturl.at\/gnqNZ",
+       "title": "Accountant",
+       "leave_type":{
+          "id":"101",
+          "name":"sick_leave",
+          "description":"Sick"
+       },
+       "from":"2024-04-01",
+       "to":"2024-04-02",
+       "status":"pending"
+    },
+    {
+       "fname":"Robert",
+       "lname":"Flint",
+       "avatar":"https:\/\/rb.gy\/u0v6hl",
+       "title": "Accountant",
+       "leave_type":{
+          "id":"103",
+          "name":"casual_leave",
+          "description":"Casual"
+       },
+       "from":"2024-04-02",
+       "to":"2024-04-7",
+       "status":"pending"
+    }
+ ]

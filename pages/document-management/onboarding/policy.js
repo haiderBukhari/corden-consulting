@@ -1,0 +1,32 @@
+import React from 'react';
+import { useRouter } from 'next/router';
+import withAuth from '../../../components/auth/auth';
+import useGetActiveUser from '../../../hooks/query/getUserFromLocalStorage';
+import OnboardingPolicyDocumentManagmentHR from '../../../components/common/document_management/HR/HROnbaordingPolcies';
+import OnboardingPolicyDocumentManagmentUser from '../../../components/common/document_management/user/components/UserOnboardingPolicies';
+import Layout from '../../../components/layout/layout';
+const OnboardingPolicyDocumentsPage = () => {
+  const { data: user } = useGetActiveUser();
+  const router = useRouter();
+
+  // Redirect to login if not authenticated
+  React.useEffect(() => {
+    if (!user) {
+      router.push('/login');
+    }
+  }, [user, router]);
+
+  if (!user) {
+    return null;
+  }
+
+  return (
+    <Layout title={'Onboarding Policies'} subtitle={'Document Management > Onboarding > Policies '}>
+     
+        <OnboardingPolicyDocumentManagmentHR />
+  
+    </Layout>
+  );
+};
+
+export default withAuth(OnboardingPolicyDocumentsPage, ['team_lead', 'staff', 'manager', 'HR', 'admin']);

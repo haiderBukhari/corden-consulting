@@ -1,0 +1,128 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+    font-family: "Outfit", sans-serif;
+}
+*{
+  font-family: "Outfit", sans-serif;
+}
+/* Style the container element to enable scrolling */
+.scrollableContainer {
+  overflow: auto; /* Enable scrolling */
+}
+
+/* Customize the scrollbar for the specific element */
+::-webkit-scrollbar {
+  width: 4px; /* Width of the scrollbar */
+  height: 3px; 
+  padding-top: 2px;
+}
+
+/* Customize the scrollbar thumb for the specific element */
+::-webkit-scrollbar-thumb {
+  background-color: #534FEB; /* Color of the thumb */
+  border-radius: 6px; /* Rounded corners */
+}
+
+.apexcharts-toolbar{
+position: fixed !important;
+
+
+}
+/* Disable pointer events and make text lighter for disabled days */
+.fc-day-disabled {
+  pointer-events: none; /* Disable clicking on the day */
+  color: #ccc; /* Light color for text to indicate it's disabled */
+}
+
+/* Optional: Add a different style for text or other elements */
+.fc-day-disabled .fc-daygrid-day-top {
+  color: #ccc; /* Lighten text color */
+}
+
+/* Tooltip styling */
+.tooltip-text {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+th:hover .tooltip-text {
+  opacity: 1;
+}
+
+/* Ensure the cell allows overflow */
+.tooltip-cell {
+  overflow: visible !important;
+  position: relative;
+  z-index: 10; /* Ensure it is above the cell */
+}
+
+/* Tooltip styling */
+.tooltip {
+  position: absolute; /* Crucial for positioning */
+  bottom: 0%; /* Position above the cell */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffeb3b; /* Keep original color */
+  color: #000; /* Keep original text color */
+  padding: 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  z-index: 9999; /* Ensure it goes above headers */
+  visibility: hidden; /* Initially hidden */
+}
+
+/* Show tooltip on hover */
+.group:hover .tooltip {
+  visibility: visible; /* Show on hover */
+}
+
+/* Allow overflow on the grid rows and headers */
+.MuiDataGrid-row,
+.MuiDataGrid-root,
+.MuiDataGrid-columnHeaders {
+  overflow: visible !important;
+}
+
+/* Lower header z-index if needed */
+.MuiDataGrid-columnHeaders {
+  z-index: 1 !important; /* Ensure headers are below tooltips */
+}
