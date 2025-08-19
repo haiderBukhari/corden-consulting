@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Layout from "../../components/layout/layout";
-import { 
-  ClockIcon, 
+import {
+  ClockIcon,
   PlusIcon,
   PencilIcon,
   TrashIcon,
@@ -434,7 +434,7 @@ const WorkSchedules = () => {
     if (stored) {
       try {
         parsed = JSON.parse(stored);
-      } catch {}
+      } catch { }
     } else {
       localStorage.setItem(LOCAL_KEY, JSON.stringify(defaultSchedules));
     }
@@ -496,7 +496,7 @@ const WorkSchedules = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center">
               <div className="h-8 w-8 bg-green-100 rounded-full flex items-center justify-center">
@@ -510,7 +510,7 @@ const WorkSchedules = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center">
               <div className="h-8 w-8 bg-purple-100 rounded-full flex items-center justify-center">
@@ -524,7 +524,7 @@ const WorkSchedules = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center">
               <div className="h-8 w-8 bg-orange-100 rounded-full flex items-center justify-center">
@@ -586,9 +586,9 @@ const WorkSchedules = () => {
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Schedule Name</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                  {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th> */}
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Work Days</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-[260px]">Work Days</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Employees</th>
                   {userRole === 'business_manager' && (
@@ -601,22 +601,20 @@ const WorkSchedules = () => {
                   <tr key={schedule.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className={`h-8 w-8 rounded-full flex items-center justify-center ${
-                          schedule.colorTag === 'blue' ? 'bg-blue-100' :
-                          schedule.colorTag === 'green' ? 'bg-green-100' :
-                          schedule.colorTag === 'orange' ? 'bg-orange-100' :
-                          schedule.colorTag === 'red' ? 'bg-red-100' :
-                          schedule.colorTag === 'purple' ? 'bg-purple-100' :
-                          'bg-gray-100'
-                        }`}>
-                          <ClockIcon className={`h-4 w-4 ${
-                            schedule.colorTag === 'blue' ? 'text-blue-600' :
-                            schedule.colorTag === 'green' ? 'text-green-600' :
-                            schedule.colorTag === 'orange' ? 'text-orange-600' :
-                            schedule.colorTag === 'red' ? 'text-red-600' :
-                            schedule.colorTag === 'purple' ? 'text-purple-600' :
-                            'text-gray-600'
-                          }`} />
+                        <div className={`h-8 w-8 rounded-full flex items-center justify-center ${schedule.colorTag === 'blue' ? 'bg-blue-100' :
+                            schedule.colorTag === 'green' ? 'bg-green-100' :
+                              schedule.colorTag === 'orange' ? 'bg-orange-100' :
+                                schedule.colorTag === 'red' ? 'bg-red-100' :
+                                  schedule.colorTag === 'purple' ? 'bg-purple-100' :
+                                    'bg-gray-100'
+                          }`}>
+                          <ClockIcon className={`h-4 w-4 ${schedule.colorTag === 'blue' ? 'text-blue-600' :
+                              schedule.colorTag === 'green' ? 'text-green-600' :
+                                schedule.colorTag === 'orange' ? 'text-orange-600' :
+                                  schedule.colorTag === 'red' ? 'text-red-600' :
+                                    schedule.colorTag === 'purple' ? 'text-purple-600' :
+                                      'text-gray-600'
+                            }`} />
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">{schedule.name}</div>
@@ -628,35 +626,37 @@ const WorkSchedules = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 max-w-xs truncate">{schedule.description}</td>
+                    {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 max-w-xs truncate">{schedule.description}</td> */}
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
-  schedule.scheduleType === 'fulltime' ? 'bg-[#E6F7F7] text-[#006D6D]' :
-  schedule.scheduleType === 'parttime' ? 'bg-[#d9f1f1] text-[#007a7a]' :
-  schedule.scheduleType === 'shift' ? 'bg-[#c2ebeb] text-[#006D6D]' :
-  schedule.scheduleType === 'hybrid' ? 'bg-[#b3e6e6] text-[#007a7a]' :
-  schedule.scheduleType === 'remote' ? 'bg-[#a3e0e0] text-[#006D6D]' :
-  schedule.scheduleType === 'rotating' ? 'bg-[#8adcdc] text-[#006D6D]' :
-  'bg-gray-100 text-gray-800'
-}`}>
+                      <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${schedule.scheduleType === 'fulltime' ? 'bg-[#E6F7F7] text-[#006D6D]' :
+                          schedule.scheduleType === 'parttime' ? 'bg-[#d9f1f1] text-[#007a7a]' :
+                            schedule.scheduleType === 'shift' ? 'bg-[#c2ebeb] text-[#006D6D]' :
+                              schedule.scheduleType === 'hybrid' ? 'bg-[#b3e6e6] text-[#007a7a]' :
+                                schedule.scheduleType === 'remote' ? 'bg-[#a3e0e0] text-[#006D6D]' :
+                                  schedule.scheduleType === 'rotating' ? 'bg-[#8adcdc] text-[#006D6D]' :
+                                    'bg-gray-100 text-gray-800'
+                        }`}>
                         {schedule.scheduleType?.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      <div className="flex flex-wrap gap-1">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 w-[260px]">
+                      <div className="flex flex-wrap md:flex-nowrap gap-1">
                         {schedule.workDays.map((day, index) => (
-                          <span key={index} className="inline-flex px-2 py-1 text-xs bg-[#E6F7F7] text-[#006D6D] rounded-full">
+                          <span
+                            key={index}
+                            className="inline-flex px-2 py-1 text-xs bg-[#E6F7F7] text-[#006D6D] rounded-full"
+                          >
                             {day.slice(0, 3)}
                           </span>
                         ))}
                       </div>
                     </td>
+
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-  schedule.status === 'Active' ? 'bg-[#E6F7F7] text-[#006D6D]' : 
-  schedule.status === 'Inactive' ? 'bg-gray-100 text-gray-800' :
-  'bg-yellow-100 text-yellow-800'
-}`}>
+                      <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${schedule.status === 'Active' ? 'bg-[#E6F7F7] text-[#006D6D]' :
+                          schedule.status === 'Inactive' ? 'bg-gray-100 text-gray-800' :
+                            'bg-yellow-100 text-yellow-800'
+                        }`}>
                         {schedule.status}
                       </span>
                     </td>
@@ -664,20 +664,20 @@ const WorkSchedules = () => {
                     {userRole === 'business_manager' && (
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <div className="flex space-x-2">
-                            <button 
-                              onClick={() => handleEditSchedule(schedule)}
-                              className="text-[#009D9D] hover:text-[#006D6D]"
-                              title="Edit"
-                            >
-                              <PencilIcon className="h-4 w-4" />
-                            </button>
-                            <button 
-                              onClick={() => handleDeleteSchedule(schedule)}
-                              className="text-red-600 hover:text-red-900"
-                              title="Delete"
-                            >
-                              <TrashIcon className="h-4 w-4" />
-                            </button>
+                          <button
+                            onClick={() => handleEditSchedule(schedule)}
+                            className="text-[#009D9D] hover:text-[#006D6D]"
+                            title="Edit"
+                          >
+                            <PencilIcon className="h-4 w-4" />
+                          </button>
+                          <button
+                            onClick={() => handleDeleteSchedule(schedule)}
+                            className="text-red-600 hover:text-red-900"
+                            title="Delete"
+                          >
+                            <TrashIcon className="h-4 w-4" />
+                          </button>
                         </div>
                       </td>
                     )}
