@@ -23,7 +23,11 @@ const Sidebar = ({ navigation }) => {
       setOpenedSubmenu(isCurrentlyOpen ? null : item.name);
       setOpenedNestedSubmenu(null);
     } else {
-      router.push(item.href);
+      if (item.external) {
+        window.open(item.href, '_blank');
+      } else {
+        router.push(item.href);
+      }
       setOpenedSubmenu(null);
       setIsMobileMenuOpen(false);
     }
@@ -34,7 +38,11 @@ const Sidebar = ({ navigation }) => {
       const isCurrentlyOpen = openedNestedSubmenu === subItem.name;
       setOpenedNestedSubmenu(isCurrentlyOpen ? null : subItem.name);
     } else {
-      router.push(subItem.href);
+      if (subItem.external) {
+        window.open(subItem.href, '_blank');
+      } else {
+        router.push(subItem.href);
+      }
       setOpenedNestedSubmenu(null);
       setIsMobileMenuOpen(false);
     }
@@ -108,6 +116,18 @@ const Sidebar = ({ navigation }) => {
                                   <li
                                     key={nestedSubItem.name}
                                     className="cursor-not-allowed opacity-50 ml-14 text-sm py-1.5"
+                                    aria-hidden="true"
+                                  >
+                                    {nestedSubItem.name}
+                                  </li>
+                                ) : nestedSubItem.external ? (
+                                  <li
+                                    key={nestedSubItem.name}
+                                    className={`${isActive(nestedSubItem.href, nestedSubItem.basePath)
+                                      ? 'text-primary font-semibold'
+                                      : 'text-default_text hover:text-primary'
+                                      } ml-14 text-sm py-1.5 cursor-pointer`}
+                                    onClick={() => window.open(nestedSubItem.href, '_blank')}
                                     aria-hidden="true"
                                   >
                                     {nestedSubItem.name}

@@ -2,7 +2,7 @@ import Sidebar from "./sidebar";
 import React, { useState, useEffect } from "react";
 import {
   HomeIcon, UserCircleIcon, UsersIcon, ArrowTrendingUpIcon, CalendarIcon, BanknotesIcon,ArrowRightStartOnRectangleIcon,ArrowLeftEndOnRectangleIcon,
-  DocumentChartBarIcon, UserGroupIcon, UserPlusIcon, BookmarkSquareIcon, Cog6ToothIcon, BuildingOffice2Icon, ExclamationTriangleIcon, DocumentIcon
+  DocumentChartBarIcon, UserGroupIcon, UserPlusIcon, BookmarkSquareIcon, Cog6ToothIcon, BuildingOffice2Icon, ExclamationTriangleIcon, DocumentIcon, GlobeAltIcon
 } from "@heroicons/react/24/outline";
 import { Briefcase, ClockIcon, CogIcon } from "lucide-react";
 import { ChartBarIcon, DocumentTextIcon } from "@heroicons/react/24/solid";
@@ -16,6 +16,7 @@ const newManagerNavigation = [
   { name: "Time Off & Leave Policies", href: "/demo/time-off-leave-policies", icon: DocumentTextIcon, basePath: "/demo/time-off-leave-policies" },
   { name: "Employment Status", href: "/demo/employment-status", icon: UserGroupIcon, basePath: "/demo/employment-status" },
   { name: "Employment History", href: "/demo/employment-history", icon: ChartBarIcon, basePath: "/demo/employment-history" },
+  { name: "Corden Talent", href: "https://talo-ai-recruitment.vercel.app/", icon: GlobeAltIcon, external: true },
 ];
 
 // HR Manager Navigation (Edit Access with Controlled History Tracking)
@@ -26,6 +27,7 @@ const hrManagerNavigation = [
   { name: "Compensation & Policies", href: "/demo/compensation-policies", icon: CogIcon, basePath: "/demo/compensation-policies" },
   { name: "Work Schedules", href: "/demo/work-schedules", icon: ClockIcon, basePath: "/demo/work-schedules" },
   { name: "Status & History", href: "/demo/status-history", icon: UserGroupIcon, basePath: "/demo/status-history" },
+  { name: "Corden Talent", href: "https://talo-ai-recruitment.vercel.app/", icon: GlobeAltIcon, external: true },
 ];
 
 // Business Configuration Manager Navigation (Full System Admin + Configuration Access)
@@ -38,6 +40,7 @@ const businessManagerNavigation = [
   { name: "Status & History", href: "/demo/status-history", icon: UserGroupIcon, basePath: "/demo/status-history" },
   { name: "System Drop-downs", href: "/demo/system-dropdowns", icon: CogIcon, basePath: "/demo/system-dropdowns" },
   { name: "Audit Logs", href: "/demo/audit-logs", icon: ChartBarIcon, basePath: "/demo/audit-logs" },
+  { name: "Corden Talent", href: "https://talo-ai-recruitment.vercel.app/", icon: GlobeAltIcon, external: true },
 ];
 
 // Legacy navigation for backward compatibility
